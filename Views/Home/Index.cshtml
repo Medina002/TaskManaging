@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AuthenticationProject.Models.Task>
+
+@{
+    ViewData["Title"] = "Tasks";
+    Layout = "~/Views/Shared/_Layout.cshtml";  
+}
+
+<h2 class="mb-4">Task List</h2>
+
+<a asp-controller="Home" asp-action="Create" class="btn btn-primary mb-3">Create New Task</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>
+                    @(task.DueDate.HasValue ? task.DueDate.Value.ToShortDateString() : "No Due Date")
+                </td>
+                <td>@(task.IsCompleted ? "Completed" : "Pending")</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

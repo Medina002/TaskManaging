@@ -1,0 +1,38 @@
+﻿@model AuthenticationProject.Models.Task
+
+@{
+    ViewData["Title"] = "Task Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-success mb-4">Task Details</h2>
+
+        <div class="mb-3">
+            <strong>Title:</strong>
+            <p class="form-control-static">@Model.Title</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Description:</strong>
+            <p class="form-control-static">@Model.Description</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Due Date:</strong>
+            <p class="form-control-static">@Model.DueDate?.ToString("yyyy-MM-dd")</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Assigned User:</strong>
+            <p class="form-control-static">@Model.UserId</p>
+            
+        </div>
+
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
